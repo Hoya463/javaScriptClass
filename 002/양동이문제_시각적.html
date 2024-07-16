@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .three div {
+        width: 300px;
+        height: 100px;
+        border: 1px solid;
+      }
+      .five div {
+        width: 400px;
+        height: 100px;
+        border: 1px solid;
+      }
+      .fill {
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="drop_3" onclick="drop_3()">3리터 물버리기</button>
+    <button id="get_3" onclick="get_3()">3리터 물얻기</button>
+    <button id="three_five" onclick="three_five()">
+      3리터에서 5리터로 붓기
+    </button>
+    <button id="drop_5" onclick="drop_5()">5리터 물 버리기</button>
+    <button id="get_5" onclick="get_5()">5리터 물 얻기</button>
+    <button id="five_three" onclick="five_three()">
+      5리터에서 3리터로 붓기
+    </button>
+    <div class="three">
+      3L 양동이
+      <div class="three-content"></div>
+      <div class="three-content"></div>
+      <div class="three-content"></div>
+    </div>
+    <div class="five">
+      5L 양동이
+      <div class="five-content"></div>
+      <div class="five-content"></div>
+      <div class="five-content"></div>
+      <div class="five-content"></div>
+      <div class="five-content"></div>
+    </div>
+
+    <script>
+      let three = document.querySelector(".three");
+      let five = document.querySelector(".five");
+      let three_content = document.querySelectorAll(".three-content");
+      let five_content = document.querySelectorAll(".five-content");
+
+      let three_water = 0;
+      let five_water = 0;
+
+      function drop_3() {
+        for (let i = 0; i < three_content.length; i++) {
+          three_content[i].classList.remove("fill");
+        }
+        three_water = 0;
+      }
+      function get_3() {
+        for (let i = 0; i < three_content.length; i++) {
+          three_content[i].classList.add("fill");
+        }
+        three_water = 3;
+      }
+      function three_five() {
+        let move_water = 0;
+        let five_hold = 5 - five_water;
+        if (three_water > five_hold) {
+          move_water = five_hold;
+        } else {
+          move_water = three_water;
+        }
+        five_water += move_water;
+        three_water -= move_water;
+
+        for (let i = 0; i < three_content.length; i++) {
+          if (i < three_water) {
+            three_content[i].classList.add("fill");
+          } else {
+            three_content[i].classList.remove("fill");
+          }
+        }
+
+        for (let i = 0; i < five_content.length; i++) {
+          if (i < five_water) {
+            five_content[i].classList.add("fill");
+          } else {
+            five_content[i].classList.remove("fill");
+          }
+        }
+      }
+      function drop_5() {
+        for (let i = 0; i < five_content.length; i++) {
+          five_content[i].classList.remove("fill");
+        }
+        five_water = 0;
+      }
+      function get_5() {
+        for (let i = 0; i < five_content.length; i++) {
+          five_content[i].classList.add("fill");
+        }
+        five_water = 5;
+      }
+      function five_three() {
+        let move_water = 0;
+        let three_hold = 3 - three_water;
+        if (five_water < three_hold) {
+          move_water = five_water;
+        } else {
+          move_water = three_hold;
+        }
+        three_water += move_water;
+        five_water -= move_water;
+
+        for (let i = 0; i < three_content.length; i++) {
+          if (i < three_water) {
+            three_content[i].classList.add("fill");
+          } else {
+            three_content[i].classList.remove("fill");
+          }
+        }
+
+        for (let i = 0; i < five_content.length; i++) {
+          if (i < five_water) {
+            five_content[i].classList.add("fill");
+          } else {
+            five_content[i].classList.remove("fill");
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

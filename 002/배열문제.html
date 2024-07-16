@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let kors = [90, 80, 70, 99, 65, 70];
+      //모든 점수 출력
+      document.write("모든 점수 출력<br>")
+      for (let i = 0; i < kors.length; i++) {
+        document.write(kors[i] + "점<br>");
+      }
+
+      document.write("평균구하기 <br>")
+      let sum = 0
+      for (let i = 0; i < kors.length; i++) {
+        sum += kors[i]
+      }
+      let result = sum/kors.length
+      document.write(result+"점<br>")
+
+      document.write("평균보다 높은 학생 수 구하기<br>")
+      let count = 0
+      for (let i = 0; i < kors.length; i++) {
+        if(result < kors[i]){
+            count++;
+        }
+      }
+      document.write(count+"명<br>")
+
+    </script>
+  </body>
+</html>
