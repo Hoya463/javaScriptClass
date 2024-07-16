@@ -19,13 +19,13 @@
       for (let i = 0; i < kors.length; i++) {
         sum += kors[i]
       }
-      let result = sum/kors.length
-      document.write(result+"점<br>")
+      let average = sum/kors.length
+      document.write(average+"점<br>")
 
       document.write("평균보다 높은 학생 수 구하기<br>")
       let count = 0
       for (let i = 0; i < kors.length; i++) {
-        if(result < kors[i]){
+        if(average < kors[i]){
             count++;
         }
       }
