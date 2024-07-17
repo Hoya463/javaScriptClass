@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //splicd 메서드는 특성요소를 제거가능
+      //원본배열의 크기가 줄어듬
+      //반환값 => 삭제된 요소를 배열로 반환
+      let arr = ["one", "two", "three", "four"];
+      console.log(arr);
+      let deletedItem = arr.splice(0, 1);
+      console.log(arr);
+      console.log(deletedItem);
+    </script>
+  </body>
+</html>
