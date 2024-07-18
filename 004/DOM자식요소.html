@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>div 태그 내의 자식요소 선택하기</h3>
+    <div id="movie">
+      <p>제목</p>
+      <p>제목2</p>
+      <p>제목3</p>
+    </div>
+
+    <script>
+      let movie = document.getElementById("movie");
+
+      let pE1 = movie.firstElementChild;
+      let pE2 = pE1.nextElementSibling;
+      let pE3 = pE2.nextElementSibling;
+      //pE3 = movie.lastElementChild;
+
+      let movie1 = pE1.innerHTML;
+      
+    </script>
+  </body>
+</html>

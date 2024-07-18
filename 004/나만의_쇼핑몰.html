@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .list p {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>장바구니리스트</h2>
+    <hr />
+    제품 클릭시 장바구니에 더하기
+    <div class="list"></div>
+    <button class="add" onclick="addItem()">추가하기</button>
+    <hr />
+    <div class="shop">여기에 장바구니 목록</div>
+    <hr />
+    <p id="total">총 가격:</p>
+
+    <script>
+      let snack = [
+        {
+          name: "초코송이",
+          price: 1200,
+          amount: 5,
+          getItem: function () {
+            return this.price * this.amount;
+          },
+        },
+        {
+          name: "새우깡",
+          price: 1500,
+          amount: 10,
+          getItem: function () {
+            return this.price * this.amount;
+          },
+        },
+        {
+          name: "포테이토칩",
+          price: 1600,
+          amount: 7,
+          getItem: function () {
+            return this.price * this.amount;
+          },
+        },
+      ];
+
+      let cart = [];
+
+      function addItem() {
+        snack.push({
+          name: prompt("등록할 과자의 이름을 입력해주세요"),
+          price: parseInt(prompt("등록할 과자의 가격을 입력해주세요")),
+          amount: parseInt(prompt("등록할 과자의 묶음 수를 입력하세요")),
+          getItem: function () {
+            return this.price * this.amount;
+          },
+        });
+        console.log(snack);
+        let content = `<p>
+        제품이름: ${snack[snack.length - 1].name}
+        제품가격: ${snack[snack.length - 1].price}원
+        제품갯수: ${snack[snack.length - 1].amount}개 </p>
+        `;
+        document.querySelector(".list").innerHTML += content;
+        addEventListeners();
+      }
+
+      function addEventListeners() {
+        let listItems = document.querySelectorAll(".list p");
+        listItems.forEach((item, index) =>
+          item.addEventListener("click", function () {
+            cart.push(snack[index]);
+            document.querySelector(".shop").innerHTML += `<p>${
+              snack[index].name
+            } - ${snack[index].amount}개 - 총 가격: ${snack[
+              index
+            ].getItem()}원</p>`;
+            calculateTotal();
+          })
+        );
+      }
+
+      function calculateTotal() {
+        let total = cart.reduce((acc, item) => acc + item.getItem(), 0);
+        document.getElementById("total").innerText = `총 가격: ${total}원`;
+      }
+
+      snack.forEach((item, index) => {
+        let content = `<p>
+        제품이름: ${item.name}
+        제품가격: ${item.price}원
+        제품갯수: ${item.amount}개 </p>
+        `;
+        document.querySelector(".list").innerHTML += content;
+      });
+
+      addEventListeners();
+    </script>
+  </body>
+</html>
