@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      header {
+        height: 100px;
+        background-color: aqua;
+        position: relative;
+      }
+      .menu {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>position:absolute : 상위부모를 기준으로 원하는 기준에 배치</h3>
+    <ul>
+      <li>상위요소에 position:relative</li>
+      <li>상위요소에 position:absolute</li>
+      <li>위의 두개가 없을 경우에는 전체를 기준으로</li>
+    </ul>
+    <header>
+      <div class="menu">메뉴</div>
+    </header>
+  </body>
+</html>
